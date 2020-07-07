@@ -12,15 +12,13 @@ const queue = new Queue('test', { connection })
 const worker = new Worker(
   'test',
   async job => {
-    if (job.name === 'inventory') {
-      console.log(job.data)
-    }
+    console.log(job.data)
   },
   {
     connection,
     limiter: {
       max: 1,
-      duration: 1000
+      duration: 5000
     }
   }
 )
